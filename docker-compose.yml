@@ -1,0 +1,42 @@
+version: '3'
+services:
+
+  mongo:
+    image: mongo:4.2.3
+    restart: always
+    volumes:
+      - ${HOME}/fairdatapoint/mongo/data:/data
+    command: mongod
+    networks:
+      - default
+
+  fdp:
+    image: kadasterdst.azurecr.io/datascience-fairdatapoint
+    build: 
+        context: .
+        dockerfile: ./fdp/Dockerfile
+    restart: always
+    networks:
+        - default
+
+  fdp-client:
+    image: kadasterdst.azurecr.io/datascience-fairdatapoint-client
+    build: 
+        context: .
+        dockerfile: ./fdp/Dockerfile
+    restart: always
+    environment:
+        - FDP_HOST=fdp
+    networks:
+        - default
+
+  # mock implementation, see application.yml for further implementation
+
+  # triplydb:
+  #   image: triplydb/virtuoso
+  #   restart: always
+  #   ports:
+  #     - 10000-10035:10000-10035
+  #   hostname: triplydb
+  #   volumes:
+  #     - ./triplydb/data:/triplydb/data/
