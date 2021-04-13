@@ -1,40 +1,21 @@
-# VODAN in the Box Basic Deployment Configuration
+# Kadaster FDP Local Deployment Configuration
 
-**‼ More information can be found in the [documentation 📕](https://docs.vodan.fairdatapoint.org/)**
+This is an example production deployment of Kadasters FDP instance. It contains images from [FAIR Data Point](https://fairdatapoint.readthedocs.io/) (FDP) and mock implementations of service extensions. This repository serves only to display configuration required for production deployment, particularly the nginx setup. 
 
-This is an example deployment of VODAN in the Box ready for a usage on a local machine. It contains preconfigured [Data Stewardship Wizard](https://ds-wizard.org) (DSW) and [FAIR Data Point](https://fairdatapoint.readthedocs.io/) (FDP).
+## Project Architecture
 
-If you want to run it in production, please use [the production deployment configuration](https://github.com/VODAN-Tech/vodan-deployment-production).
+The following illustrates the overall architecture of this project in the Kadaster context. In practice, the architecture includes 5 services:
 
-## Instructions
+1. Metadata Provider Service
+2. FAIR Data Accessor Service
+3. SHACL Validator Service
+4. Client Interface Service
+5. Triple Store Interface Service
 
-**1. Clone repository**
-
-```
-$ git clone https://github.com/VODAN-Tech/vodan-deployment-basic
-```
-
-**2. Edit configs**
-
-The DSW and FDP are mostly preconfigured. However, there are still some properties that has to be defined. Go through configuration files and find `(!)` with description what to do.
-
-**3. Run docker**
-
-```
-$ docker-compose up -d
-```
-
-**4. Open browser**
-
-- FAIR Data Point
-  - Default username:`albert.einstein@example.com`
-  - Default password `password`.
-
-- Data Stewardship Wizard
-  - Default username:`albert.einstein@example.com`
-  - Default password `password`.
-
+Figure 1: Project Architecture in Kadaster's Context
+![image](https://user-images.githubusercontent.com/74549995/114614386-b9c1fd80-9ca4-11eb-907a-a12ec5976138.png)
 
 ## Important notes
 
-For more information, see [VODAN Docs](https://docs.vodan.fairdatapoint.org/), [FDP Docs](https://fairdatapoint.readthedocs.io/) and [DSW Docs](https://docs.ds-wizard.org)
+For more information on the overall vision for the FDP, see [FDP Docs](https://fairdatapoint.readthedocs.io/)
+
